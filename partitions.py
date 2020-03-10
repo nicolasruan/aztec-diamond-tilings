@@ -1,3 +1,5 @@
+import numpy as np
+
 
 class Partition:
     def __init__(self, parts):
@@ -112,7 +114,6 @@ def diagonal(d, lam, i):
             if d[k] == 1:
                 particles += 1
     diff = abs(holes-particles)
-    print(diff)
     for k in range(0, diff):
         d.insert(0, 1)
     d = d[0:length]
@@ -136,48 +137,85 @@ def configuration(L):
         PC.append(C)
     return PC
 
-print( diagonal([0, 0, 0, 0, 0], Partition([2, 1]), 4) )
 
-la = Partition([2,1])
-mu = Partition([4])
-ka = Partition([2])
-B = 0
+def random_partitions(n):
+    B = int(n*(n+1)/2)
+    b = np.random.randint(0, 2, B)
+    k = 0
+    L = [ [Partition([]) for i in range(0, j)] for j in range(1, n+3) ]
+    for i in range(0, n+2):
+        L[i][0] = Partition([0])
+        L[i][i] = Partition([0])
+    for i in range(1, n+2):
+        for j in range(1, i):
+            la = L[i-1][j-1]
+            mu = L[i-1][j]
+            ka = L[i-2][j-1]
+            L[i][j] = dual_cauchy(la, mu, ka, b[k])
+            k+=1
 
-print(interlace(mu, ka))
-print(dual_interlace(la, ka))
 
-la.display()
-mu.display()
-ka.display()
-nu = dual_cauchy(la, mu, ka, B)
-nu.display()
+    partitions = []
+    for i in range(0, 2*n+1):
+        if i%2==0:
+            k = n
+        else:
+            k = n+1
+        x = int((i + (i%2))/2)
+        partitions.append(L[k][x])
 
-print(interlace(nu, la))
-print(dual_interlace(nu, mu))
+    return partitions
 
-l0 = Partition([0])
-l1 = Partition([1])
-l2 = Partition([1])
-l3 = Partition([1])
-l4 = Partition([1])
-l5 = Partition([1])
-l6 = Partition([0])
 
-C0 = [0, 0, 0]
-C1 = [0, 0, 0, 0]
-C2 = [0, 0, 0]
-C3 = [0, 0, 0, 0]
-C4 = [0, 0, 0]
-C5 = [0, 0, 0, 0]
-C6 = [0, 0, 0]
+        
 
-C = [C0, C1, C2, C3, C4, C5, C6]
-LL = [l0, l1, l2, l3, l4, l5, l6]
 
-##for k in range(0, len(C)):
-##    C[k] = diagonal(C[k], LL[k], k)
+random_partitions(3)
+        
+
+
+#print( diagonal([0, 0, 0, 0, 0], Partition([2, 1]), 4) )
+
+##la = Partition([2,1])
+##mu = Partition([4])
+##ka = Partition([2])
+##B = 0
 ##
-##print(C)
-
-print(configuration(LL))
+##print(interlace(mu, ka))
+##print(dual_interlace(la, ka))
+##
+##la.display()
+##mu.display()
+##ka.display()
+##nu = dual_cauchy(la, mu, ka, B)
+##nu.display()
+##
+##print(interlace(nu, la))
+##print(dual_interlace(nu, mu))
+##
+##l0 = Partition([0])
+##l1 = Partition([1])
+##l2 = Partition([1])
+##l3 = Partition([1])
+##l4 = Partition([1])
+##l5 = Partition([1])
+##l6 = Partition([0])
+##
+##C0 = [0, 0, 0]
+##C1 = [0, 0, 0, 0]
+##C2 = [0, 0, 0]
+##C3 = [0, 0, 0, 0]
+##C4 = [0, 0, 0]
+##C5 = [0, 0, 0, 0]
+##C6 = [0, 0, 0]
+##
+##C = [C0, C1, C2, C3, C4, C5, C6]
+##LL = [l0, l1, l2, l3, l4, l5, l6]
+##
+####for k in range(0, len(C)):
+####    C[k] = diagonal(C[k], LL[k], k)
+####
+####print(C)
+##
+##print(configuration(LL))
 
