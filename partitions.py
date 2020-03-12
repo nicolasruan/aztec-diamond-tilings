@@ -7,8 +7,8 @@ class Partition:
         self.parts = parts
         self.length = len(parts)
 
-    def get(self, i):
-        if i == 0: return 10**10
+    def get(self, i): 
+        if i == 0: return 10**10 # by convention part zero is +infinity
         if i<=self.length:
             return self.parts[i-1]
         else:
@@ -23,13 +23,11 @@ class Partition:
             self.parts[i-1] = x
         elif i == self.length+1:
             self.parts.append(x)
-        else:
-            print("bad index: partition must be non-increasing")
 
         self.length = len(self.parts)
 
     def display(self):
-        print("partition")
+        print("partition" + self.parts)
         for part in self.parts:
             print(part*"*")
 
@@ -138,9 +136,19 @@ def configuration(L):
     return PC
 
 
-def random_partitions(n):
+def random_partitions(n, weights):
+    #input:     n order of the aztec diamond
+    #           weights list of n*(n+1)/2 real numbers in [0, 1]
+    #output:    list of 2*n+1 partitions that
+    #           satisfies the interlacing condition 
     B = int(n*(n+1)/2)
-    b = np.random.randint(0, 2, B)
+    c = np.random.rand(B)
+    b = []
+    for k in range(0, len(c)):
+        if c[k] > weights[k]:
+            b.append(0)
+        else:
+            b.append(1)
     k = 0
     L = [ [Partition([]) for i in range(0, j)] for j in range(1, n+3) ]
     for i in range(0, n+2):
@@ -166,56 +174,4 @@ def random_partitions(n):
 
     return partitions
 
-
-        
-
-
-random_partitions(3)
-        
-
-
-#print( diagonal([0, 0, 0, 0, 0], Partition([2, 1]), 4) )
-
-##la = Partition([2,1])
-##mu = Partition([4])
-##ka = Partition([2])
-##B = 0
-##
-##print(interlace(mu, ka))
-##print(dual_interlace(la, ka))
-##
-##la.display()
-##mu.display()
-##ka.display()
-##nu = dual_cauchy(la, mu, ka, B)
-##nu.display()
-##
-##print(interlace(nu, la))
-##print(dual_interlace(nu, mu))
-##
-##l0 = Partition([0])
-##l1 = Partition([1])
-##l2 = Partition([1])
-##l3 = Partition([1])
-##l4 = Partition([1])
-##l5 = Partition([1])
-##l6 = Partition([0])
-##
-##C0 = [0, 0, 0]
-##C1 = [0, 0, 0, 0]
-##C2 = [0, 0, 0]
-##C3 = [0, 0, 0, 0]
-##C4 = [0, 0, 0]
-##C5 = [0, 0, 0, 0]
-##C6 = [0, 0, 0]
-##
-##C = [C0, C1, C2, C3, C4, C5, C6]
-##LL = [l0, l1, l2, l3, l4, l5, l6]
-##
-####for k in range(0, len(C)):
-####    C[k] = diagonal(C[k], LL[k], k)
-####
-####print(C)
-##
-##print(configuration(LL))
 
