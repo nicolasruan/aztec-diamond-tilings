@@ -2,7 +2,8 @@
 Random tilings of Aztec Diamond
 
 The partitions library implements some commonly used notions regarding partitions:
-Class
+
+Classes
 - Partition(parts):
     takes as input a non-increasing list of integers and returns the Partition object
     methods:
