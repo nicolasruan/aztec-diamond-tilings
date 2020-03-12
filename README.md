@@ -1,7 +1,7 @@
 # aztec-diamond-tilings
 Random tilings of Aztec Diamond
 
-The partitions library implements some commonly used notions regarding partitions:
+The partitions library (depending on the library numpy) implements some commonly used notions regarding partitions:
 
 Classes
 - Partition(parts):
@@ -21,7 +21,7 @@ Functions
     returns a random sequence of partitions of length 2n+1 that satisfies the 
     interlacing condition, based on the given weights
 
-The interface script provides a user friendly interface for generating random partitions and drawing the corresponding tiling using the pygame library. 
+The interface script provides a graphical interface for visualizing domino tilings (depends on the library pygame).
 
 
 Nicolas Ruan
