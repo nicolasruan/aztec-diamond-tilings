@@ -3,7 +3,7 @@ Random tilings of Aztec Diamond
 
 Classes
 - Partition(parts):
-    takes as input a non-increasing list of integers and returns the Partition object
+    takes as input a non-increasing list of integers
     
     methods:
     
