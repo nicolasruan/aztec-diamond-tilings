@@ -1,8 +1,6 @@
 # aztec-diamond-tilings
 Random tilings of Aztec Diamond
 
-The partitions library (depending on the library numpy) implements some commonly used notions regarding partitions:
-
 Classes
 - Partition(parts):
     takes as input a non-increasing list of integers and returns the Partition object
