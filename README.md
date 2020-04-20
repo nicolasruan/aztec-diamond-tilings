@@ -8,20 +8,20 @@ Classes
     takes as input a non-increasing list of integers and returns the Partition object
     methods:
       - get(i) : returns the i-th part
-      - set(i, x) : tries to set the i-th part to x
+      - set(i, x) : set the i-th part to x if the result is a valid partition
 
 Functions
 - interlace(p1, p2): 
-    check if p1 > p2
+    return True if p1 > p2
 - dual_interlace(p1, p2): 
-    check if p1 >' p2 (equivalently p1'> p2' where ' is conjugation)
+    return True if p1 >' p2 
 - configuration(L): 
     takes a list of partitions L of length 2n+1 and returns the Maya diagram of L
+    refer to the code for the format of Maya diagram
 - random_partitions(n, weights): 
     returns a random sequence of partitions of length 2n+1 that satisfies the 
     interlacing condition, based on the given weights
 
-The interface script provides a graphical interface for visualizing domino tilings (depends on the library pygame).
+Run interface to draw random partition on screen (uses pygame library).
 
-
-Nicolas Ruan
+NR
