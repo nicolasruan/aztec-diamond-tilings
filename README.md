@@ -1,5 +1,6 @@
 # aztec-diamond-tilings
 The module 'partitions.py' implements the Aztec diamond tiling algorithm described in [1] and [2].
+
 Run 'interface.py' to draw random tiling on screen (requires pygame).
 
 Classes
@@ -35,6 +36,7 @@ Functions
     
 
 [1] 'From Aztec diamonds to pyramids: steep tilings' (2017), J. Bouttier, G. Chapuy, S. Corteel 
+
 [2] 'Perfect sampling algorithms for Schur processes' (2018), D. Betea, C. Boutillier, J. Bouttier, G. Chapuy, S. Corteel, M. Vuletic
 
 For more information, feel free to contact me at
