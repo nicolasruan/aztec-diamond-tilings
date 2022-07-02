@@ -1,5 +1,6 @@
 # aztec-diamond-tilings
-Random tilings of Aztec Diamond
+The module 'partitions.py' implements the Aztec diamond tiling algorithm described in [1] and [2].
+Run 'interface.py' to draw random tiling on screen (requires pygame).
 
 Classes
 - Partition(parts):
@@ -13,10 +14,16 @@ Classes
 
 Functions
 - interlace(p1, p2): 
-    return True if p1 > p2
+    returns True if partitions p1 and p2 are interlaced
     
 - dual_interlace(p1, p2): 
-    return True if p1 >' p2 
+    returns True if partitions p1 and p2 are dual interlaced
+
+- diagonal(d, lam, i):
+    helper function for configuration(L)
+    returns the Maya diagram of partition lam such that the number of particles
+    above the i-th diagonal element is equal to the number of holes below the 
+    i-th diagonal element
     
 - configuration(L): 
     takes a list of partitions L of length 2n+1 and returns the Maya diagram of L
@@ -27,6 +34,9 @@ Functions
     interlacing condition, based on the given weights
     
 
-Run interface to draw random partition on screen (uses pygame library).
+[1] 'From Aztec diamonds to pyramids: steep tilings' (2017), J. Bouttier, G. Chapuy, S. Corteel 
+[2] 'Perfect sampling algorithms for Schur processes' (2018), D. Betea, C. Boutillier, J. Bouttier, G. Chapuy, S. Corteel, M. Vuletic
 
-NR
+For more information, feel free to contact me at
+NICOLAS RUAN 
+nicolasruan@hotmail.com
