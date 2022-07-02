@@ -40,5 +40,7 @@ Functions
 [2] 'Perfect sampling algorithms for Schur processes' (2018), D. Betea, C. Boutillier, J. Bouttier, G. Chapuy, S. Corteel, M. Vuletic
 
 For more information, feel free to contact me at
+
 NICOLAS RUAN 
+
 nicolasruan@hotmail.com
